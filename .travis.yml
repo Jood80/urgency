@@ -6,7 +6,6 @@ cashe:
     - node_modules
 
 script:
-  - yarn test
   - yarn build
   - yarn lint
 
