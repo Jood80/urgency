@@ -10,7 +10,7 @@ const theme = createMuiTheme({
     secondary: {
       main: '#CD3B3B',
     },
-    cta: {
+    action: {
       main: '#b00002',
     },
     error: {
