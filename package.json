@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "linting": "eslint ./pages --fix",
+        "linting": "eslint --fix ./pages ",
         "format": "prettier --write \"**/*.{js,jsx,json,md}\""
     },
     "dependencies": {

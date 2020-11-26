@@ -4,7 +4,12 @@
         "es2021": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
     "parserOptions": {
         "sourceType": "module",
 
@@ -13,13 +18,14 @@
         },
         "ecmaVersion": 12
     },
-    "plugins": ["react"],
+    "plugins": ["react", "prettier"],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "indent": ["error", "tab"],
+        "indent": ["error", 4],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
-        "semi": ["error", "never"]
+        "semi": ["error", "never"],
+        "prettier/prettier": "error"
     },
     "globals": {
         "React": "writable"
