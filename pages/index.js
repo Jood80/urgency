@@ -7,6 +7,7 @@ import { useStyles } from '../styles/landingPage'
 
 import {
   Container,
+  Box,
   Typography,
   Button,
   AppBar,
@@ -74,19 +75,21 @@ export default function Home(props) {
             >
               Urgency
             </Typography>
-            <Typed
-              style={{
-                color: '#b71c1c',
-                fontSize: '200%',
-                alignSelf: 'center',
-              }}
-              shuffle
-              typeSpeed={50}
-              backSpeed={20}
-              strings={quotes}
-              smartBackspace
-              loop
-            />
+            <Box ml="9rem">
+              <Typed
+                style={{
+                  color: '#b71c1c',
+                  fontSize: '200%',
+                  alignSelf: 'center',
+                }}
+                shuffle
+                typeSpeed={50}
+                backSpeed={20}
+                strings={quotes}
+                smartBackspace
+                loop
+              />
+            </Box>
             <Typography
               variant="h5"
               align="center"
