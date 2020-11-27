@@ -36,6 +36,8 @@ export default function Home(props) {
     <Fragment>
       <Head>
         <title>Urgency Site</title>
+        <meta name="keywords" content="keywards" />
+        <meta name="description" content="description" />
       </Head>
 
       <AppBar position="relative" color="secondary">
