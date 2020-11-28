@@ -13,7 +13,7 @@ async function fetchedData(path, params = null) {
     const { data: response } = await axios.get(`${url}`)
     return response
   } catch (err) {
-    console.log(`Error is ${err}`, err)
+    console.error(`Error is ${err}`, err)
   }
 }
 export { backURL, fetchedData }
