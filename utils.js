@@ -1,17 +1,19 @@
 import axios from 'axios'
 
-const backUrl = process.env.BACK_URL
+const backURL = process.env.NEXT_PUBLIC_BACK_URL
 
 async function fetchedData(path, params = null) {
   let url
   if (params !== null) {
-    url = `${backUrl}/${path}/${params}`
+    url = `${backURL}/${path}/${params}`
   } else {
-    url = `${backUrl}/${path}`
+    url = `${backURL}/${path}`
   }
-
-  const response = await axios(`${url}`)
-  const data = await response.json()
-  return data
+  try {
+    const { data: response } = await axios.get(`${url}`)
+    return response
+  } catch (err) {
+    console.log(`Error is ${err}`, err)
+  }
 }
-export { backUrl, fetchedData }
+export { backURL, fetchedData }
