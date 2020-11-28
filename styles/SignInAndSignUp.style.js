@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(7),
   },
   paper: {
     marginTop: theme.spacing(4),
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%',
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
