@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchedData } from '../utils'
+import Layout from '../src/Layout'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -34,98 +35,100 @@ const SignUp = (props) => {
   }, [submited])
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        border={1}
-        borderColor="secondary.main"
-        borderRadius="5%"
-        p={5}
-        className={classes.root}
-      >
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <form
-            className={classes.form}
-            onSubmit={(e) => {
-              e.preventDefault()
-              setSubmitted(true)
-            }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  autoComplete="fname"
-                  name="userName"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="userName"
-                  label="User Name"
-                  autoFocus
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  autoComplete="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  autoComplete="current-password"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  label="Password"
-                  type="password"
-                  id="password"
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
+    <Layout description={'signUp page'} keywords={'register'}>
+      <Container component="main" maxWidth="xs">
+        <Box
+          border={1}
+          borderColor="secondary.main"
+          borderRadius="5%"
+          p={5}
+          className={classes.root}
+        >
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <form
+              className={classes.form}
+              onSubmit={(e) => {
+                e.preventDefault()
+                setSubmitted(true)
+              }}
             >
-              Sign Up
-            </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    color="secondary"
+                    autoComplete="fname"
+                    name="userName"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="userName"
+                    label="User Name"
+                    autoFocus
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    color="secondary"
+                    autoComplete="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="secondary"
+                    autoComplete="current-password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    id="password"
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={5}>
-          <Copyright />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+          <Box mt={5}>
+            <Copyright />
+          </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </Layout>
   )
 }
 

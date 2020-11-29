@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import Layout from '../src/Layout'
 import PropTypes from 'prop-types'
 import { fetchedData } from '../utils'
@@ -25,11 +24,6 @@ const News = ({ news, seo }) => {
 
   return (
     <Layout description={seo.description} keywords={seo.keywords}>
-      <Head>
-        <title>Urgency Site</title>
-        <meta name="keywords" content="keywards" />
-        <meta name="description" content="description" />
-      </Head>
       <NavBar />
       <main>
         <Box pt={4}>
@@ -54,13 +48,15 @@ const News = ({ news, seo }) => {
                         {newData.publishedAt}
                       </Typography>
                     </CardContent>
-                    <CardActions>
-                      <Link href={newData.url} color="inherit">
-                        <Button variant="outlined" color="secondary">
-                          read more
-                        </Button>
-                      </Link>
-                    </CardActions>
+                    <Box pb={1}>
+                      <CardActions>
+                        <Link href={newData.url} color="inherit">
+                          <Button variant="outlined" color="secondary">
+                            read more
+                          </Button>
+                        </Link>
+                      </CardActions>
+                    </Box>
                   </Card>
                 </Grid>
               ))}
