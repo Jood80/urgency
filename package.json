@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-on-netlify",
     "start": "next start",
     "lint": "eslint --fix . ",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
@@ -15,6 +16,7 @@
     "@material-ui/styles": "^4.11.1",
     "axios": "^0.21.0",
     "next": "10.0.3",
+    "next-on-netlify": "^2.6.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-particles-js": "^3.4.1",
