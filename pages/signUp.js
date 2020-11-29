@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { fetchedData } from '../utils'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -14,6 +15,23 @@ import useStyles from '../styles/SignInAndSignUp.style'
 
 const SignUp = (props) => {
   const classes = useStyles(props)
+  const [userName, setUserName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [submited, setSubmitted] = useState(false)
+
+  useEffect(async () => {
+    try {
+      const signUp = await fetchedData('POST', 'signUp', {
+        userName,
+        password,
+        email,
+      })
+      if (signUp.message.includes('successfully')) console.log({ signUp })
+    } catch (err) {
+      console.log(err)
+    }
+  }, [submited])
 
   return (
     <Container component="main" maxWidth="xs">
@@ -31,13 +49,21 @@ const SignUp = (props) => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            className={classes.form}
+            onSubmit={(e) => {
+              e.preventDefault()
+              setSubmitted(true)
+            }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   color="secondary"
                   autoComplete="fname"
                   name="userName"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                   variant="outlined"
                   required
                   fullWidth
@@ -50,26 +76,30 @@ const SignUp = (props) => {
               <Grid item xs={12}>
                 <TextField
                   color="secondary"
+                  autoComplete="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   variant="outlined"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
-                  autoComplete="email"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   color="secondary"
+                  autoComplete="current-password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   variant="outlined"
                   required
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="current-password"
                 />
               </Grid>
             </Grid>
