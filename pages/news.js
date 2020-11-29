@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { fetchedData } from '../utils'
 
 const News = ({ news, seo }) => (
-  <Layout description={seo.description} keywards={seo.keywards}>
+  <Layout description={seo.description} keywords={seo.keywords}>
     <section>
       {news.map((newsData) => (
         <>
