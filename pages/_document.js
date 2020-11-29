@@ -40,5 +40,6 @@ MyDocument.getInitialProps = async (ctx) => {
       ...React.Children.toArray(initialProps.styles),
       sheets.getStyleElement(),
     ],
+    revalidate: 900,
   }
 }

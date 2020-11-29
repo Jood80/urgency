@@ -2,7 +2,10 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(4),
+    height: theme.spacing(6),
+    width: theme.spacing(5),
+    cursor: 'pointer',
   },
   heroContent: {
     backgroundColor: theme.palette.background.primary,

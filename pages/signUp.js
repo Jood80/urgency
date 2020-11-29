@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { fetchedData } from '../utils'
 import Layout from '../src/Layout'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
@@ -20,6 +20,7 @@ const SignUp = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submited, setSubmitted] = useState(false)
+  const [successfullRegister, setSuccessfullRegister] = useState(false)
 
   useEffect(async () => {
     try {
@@ -28,9 +29,12 @@ const SignUp = (props) => {
         password,
         email,
       })
-      if (signUp.message.includes('successfully')) console.log({ signUp })
+      if (signUp.message.includes('successfully')) {
+        console.log(signUp.message)
+        setSuccessfullRegister(true)
+      }
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }, [submited])
 
@@ -54,15 +58,17 @@ const SignUp = (props) => {
             <form
               className={classes.form}
               onSubmit={(e) => {
-                e.preventDefault()
-                setSubmitted(true)
+                if (successfullRegister) {
+                  e.preventDefault()
+                  setSubmitted(true)
+                }
               }}
             >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
                     color="secondary"
-                    autoComplete="fname"
+                    autoComplete="fullname"
                     name="userName"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
@@ -87,6 +93,7 @@ const SignUp = (props) => {
                     fullWidth
                     id="email"
                     label="Email Address"
+                    autoFocus
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -105,18 +112,20 @@ const SignUp = (props) => {
                   />
                 </Grid>
               </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="secondary"
-                className={classes.submit}
-              >
-                Sign Up
-              </Button>
+              <Link href="/news">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                >
+                  Sign Up
+                </Button>
+              </Link>
               <Grid container justify="flex-end">
-                <Grid item>
-                  <Link href="#" variant="body2">
+                <Grid item color="secondary">
+                  <Link href="/signIn" variant="body2">
                     Already have an account? Sign in
                   </Link>
                 </Grid>

@@ -20,7 +20,6 @@ import {
 
 const News = ({ news, seo }) => {
   const classes = useStyles({ news, seo })
-  console.log('news', news)
 
   return (
     <Layout description={seo.description} keywords={seo.keywords}>

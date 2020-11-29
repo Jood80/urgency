@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import Link from 'next/link'
 import Particles from 'react-particles-js'
 import Typed from 'react-typed'
 import Layout from '../src/Layout'
@@ -78,14 +79,18 @@ export default function Home(props) {
               <div className={classes.heroButtons}>
                 <Grid container spacing={2} justify="center">
                   <Grid item>
-                    <Button variant="contained" color="secondary">
-                      Main call to action
-                    </Button>
+                    <Link href="/news">
+                      <Button variant="contained" color="secondary">
+                        Read News
+                      </Button>
+                    </Link>
                   </Grid>
                   <Grid item>
-                    <Button variant="outlined" color="secondary">
-                      Secondary action
-                    </Button>
+                    <Link href="/signUp">
+                      <Button variant="outlined" color="secondary">
+                        Sign Up
+                      </Button>
+                    </Link>
                   </Grid>
                 </Grid>
               </div>
