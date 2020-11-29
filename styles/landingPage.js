@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    borderRadius: '3%',
   },
   cardMedia: {
     paddingTop: '56.25%',
@@ -27,6 +28,18 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     paddingBottom: theme.spacing(2),
+  },
+  buttonWidth: {
+    padding: '0.1rem 5rem',
+    margin: '0rem 4rem 0rem',
+  },
+  typed: {
+    padding: '0.2rem 2rem 0.2rem 7rem',
+    margin: '0rem 2rem 0.6rem',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0rem 1rem',
+      margin: '0',
+    },
   },
 }))
 
