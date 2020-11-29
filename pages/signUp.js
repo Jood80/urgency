@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { fetchedData } from '../utils'
 import Layout from '../src/Layout'
@@ -19,10 +19,8 @@ const SignUp = (props) => {
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [submited, setSubmitted] = useState(false)
-  const [successfullRegister, setSuccessfullRegister] = useState(false)
 
-  useEffect(async () => {
+  const handleSubmit = async (e) => {
     try {
       const signUp = await fetchedData('POST', 'signUp', {
         userName,
@@ -31,12 +29,12 @@ const SignUp = (props) => {
       })
       if (signUp.message.includes('successfully')) {
         console.log(signUp.message)
-        setSuccessfullRegister(true)
+        e.preventDefault()
       }
     } catch (err) {
       console.error(err)
     }
-  }, [submited])
+  }
 
   return (
     <Layout description={'signUp page'} keywords={'register'}>
@@ -55,15 +53,7 @@ const SignUp = (props) => {
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
-            <form
-              className={classes.form}
-              onSubmit={(e) => {
-                if (successfullRegister) {
-                  e.preventDefault()
-                  setSubmitted(true)
-                }
-              }}
-            >
+            <form className={classes.form} onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
