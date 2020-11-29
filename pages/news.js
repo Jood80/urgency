@@ -1,28 +1,86 @@
 import React from 'react'
+import Head from 'next/head'
 import Layout from '../src/Layout'
 import PropTypes from 'prop-types'
 import { fetchedData } from '../utils'
+import { NavBar, Copyrights } from '../components'
+import { useStyles } from '../styles/landingPage'
 
-const News = ({ news, seo }) => (
-  <Layout description={seo.description} keywords={seo.keywords}>
-    <section>
-      {news.map((newsData) => (
-        <>
-          <ul>
-            <li key={newsData.id}>{newsData.description}</li>
-          </ul>
-        </>
-      ))}
-    </section>
-  </Layout>
-)
+import {
+  Container,
+  Link,
+  Box,
+  Typography,
+  Button,
+  Card,
+  CardActions,
+  CardMedia,
+  Grid,
+  CardContent,
+} from '@material-ui/core'
+
+const News = ({ news, seo }) => {
+  const classes = useStyles({ news, seo })
+  console.log('news', news)
+
+  return (
+    <Layout description={seo.description} keywords={seo.keywords}>
+      <Head>
+        <title>Urgency Site</title>
+        <meta name="keywords" content="keywards" />
+        <meta name="description" content="description" />
+      </Head>
+      <NavBar />
+      <main>
+        <Box pt={4}>
+          <Container className={classes.cardGrid} maxWidth="md">
+            <Grid container spacing={4}>
+              {news.map((newData) => (
+                <Grid item key={newData.id} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={newData.urlToImage}
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="body1" component="h6">
+                        {newData.title}
+                      </Typography>
+                      <Typography gutterBottom variant="h6" component="h2">
+                        {newData.author}
+                      </Typography>
+                      <Typography gutterBottom variant="inherit" component="h6">
+                        {newData.publishedAt}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Link href={newData.url} color="inherit">
+                        <Button variant="outlined" color="secondary">
+                          read more
+                        </Button>
+                      </Link>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Box>
+        <footer className={classes.buttonWidth}>
+          <Copyrights color="secondary" />
+        </footer>
+      </main>
+    </Layout>
+  )
+}
 export default News
 
 export async function getServerSideProps() {
   const news = await fetchedData('GET', 'news')
   return {
     props: {
-      news: news.response.sources,
+      news: news.response.articles,
       seo: news.seo,
     },
   }
