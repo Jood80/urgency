@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Link } from '@material-ui/core'
 
-const Copyright = () => (
+const Copyrights = () => (
   <Typography variant="body2" color="secondary" align="center">
     {'Copyright © '}
     <Link color="inherit" href="https://material-ui.com/">
@@ -13,4 +13,4 @@ const Copyright = () => (
   </Typography>
 )
 
-export default Copyright
+export default Copyrights
