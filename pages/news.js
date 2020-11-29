@@ -29,7 +29,7 @@ const News = ({ news, seo }) => {
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
               {news.map((newData) => (
-                <Grid item key={newData.id} xs={12} sm={6} md={4}>
+                <Grid item key={newData.publishedAt} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
@@ -82,6 +82,6 @@ export async function getServerSideProps() {
 }
 
 News.propTypes = {
-  news: PropTypes.object.isRequired,
+  news: PropTypes.array.isRequired,
   seo: PropTypes.object.isRequired,
 }

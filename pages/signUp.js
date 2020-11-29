@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { fetchedData } from '../utils'
 import Layout from '../src/Layout'
 import Avatar from '@material-ui/core/Avatar'
@@ -22,6 +23,7 @@ const SignUp = (props) => {
 
   const handleSubmit = async (e) => {
     try {
+      e.preventDefault()
       const signUp = await fetchedData('POST', 'signUp', {
         userName,
         password,
@@ -29,7 +31,7 @@ const SignUp = (props) => {
       })
       if (signUp.message.includes('successfully')) {
         console.log(signUp.message)
-        e.preventDefault()
+        Router.push('/news')
       }
     } catch (err) {
       console.error(err)
@@ -102,17 +104,17 @@ const SignUp = (props) => {
                   />
                 </Grid>
               </Grid>
-              <Link href="/news">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="secondary"
-                  className={classes.submit}
-                >
-                  Sign Up
-                </Button>
-              </Link>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+
               <Grid container justify="flex-end">
                 <Grid item color="secondary">
                   <Link href="/signIn" variant="body2">
