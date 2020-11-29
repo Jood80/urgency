@@ -9,18 +9,17 @@ async function fetchedData(method = 'get', path, userInfo, params = null) {
   } else {
     url = `${backURL}/${path}`
   }
-  const data = userInfo ? userInfo : {}
+  const userINFO = userInfo ? userInfo : {}
 
   try {
-    const { data: response } = await axios({
+    const { data } = await axios({
       method,
       url: `${url}`,
-      data,
+      data: userINFO,
     })
-    console.log(response)
-    return response
+    return data
   } catch (err) {
-    console.error(`Error is ${err}`)
+    console.error(`${err} is`, err)
   }
 }
 export { backURL, fetchedData }
