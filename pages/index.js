@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
-import Particles from 'react-particles-js'
+import Particles from 'react-particles'
 import Typed from 'react-typed'
 import Layout from '../src/Layout'
 import { NavBar, Copyrights } from '../components'
@@ -77,7 +77,7 @@ export default function Home(props) {
                 short so folks don&apos;t simply skip over it entirely.
               </Typography>
               <div className={classes.heroButtons}>
-                <Grid container spacing={2} justify="center">
+                <Grid container spacing={2} justifyContent="center">
                   <Grid item>
                     <Link href="/news">
                       <Button variant="contained" color="secondary">
