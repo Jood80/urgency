@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../src/Layout'
 import PropTypes from 'prop-types'
 import { fetchedData } from '../utils'
-import { NavBar, Copyrights } from '../components'
+import { NavBar } from '../components'
 import { useStyles } from '../styles/landingPage'
 
 import {
@@ -29,7 +29,7 @@ const News = ({ news, seo }) => {
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
               {news.map((newData) => (
-                <Grid item key={newData.publishedAt} xs={12} sm={6} md={4}>
+                <Grid item key={newData.url} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
@@ -37,13 +37,28 @@ const News = ({ news, seo }) => {
                       title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="body1" component="h6">
+                      <Typography
+                        gutterBottom
+                        variant="body1"
+                        component="h6"
+                        color="textSecondary"
+                      >
                         {newData.title}
                       </Typography>
-                      <Typography gutterBottom variant="h6" component="h2">
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="h2"
+                        color="textSecondary"
+                      >
                         {newData.author}
                       </Typography>
-                      <Typography gutterBottom variant="inherit" component="h6">
+                      <Typography
+                        gutterBottom
+                        variant="inherit"
+                        component="h6"
+                        color="textSecondary"
+                      >
                         {newData.publishedAt}
                       </Typography>
                     </CardContent>
@@ -62,9 +77,6 @@ const News = ({ news, seo }) => {
             </Grid>
           </Container>
         </Box>
-        <footer className={classes.buttonWidth}>
-          <Copyrights color="secondary" />
-        </footer>
       </main>
     </Layout>
   )
@@ -73,6 +85,7 @@ export default News
 
 export async function getServerSideProps() {
   const news = await fetchedData('GET', 'news')
+  console.log(news)
   return {
     props: {
       news: news.response.articles,

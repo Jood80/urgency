@@ -69,7 +69,7 @@ export default function Home(props) {
               <Typography
                 variant="h5"
                 align="center"
-                color="textSecondary"
+                color="textPrimary"
                 paragraph
               >
                 Something short and leading about the collection below—its
